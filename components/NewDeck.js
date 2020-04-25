@@ -1,15 +1,51 @@
 import React, {Component} from 'react'
-import {View} from "react-native";
-import Text from "react-native-web/dist/exports/Text";
+import {View, Text, TextInput, Button, Keyboard} from "react-native";
+import styles, {colorPrimary} from "../styles";
+import {connect} from 'react-redux'
+import {handleNewDeck} from "../actions/Decks";
 
 class NewDeck extends Component {
+    state = {
+        titleInput: '',
+    }
+
+    setTitle = (titleInput)=>this.setState({titleInput})
+
+    submitDeck = () => {
+        const {dispatch,navigation} = this.props
+        const {titleInput} = this.state
+        dispatch(handleNewDeck(titleInput.trim()))
+        this.setState({titleInput:''})
+        Keyboard.dismiss()
+        navigation.navigate('Decks')
+    }
+
     render(){
+
+        const {titleInput} = this.state
+
         return (
-            <View>
-                <Text>NewDeck</Text>
+            <View style={styles.centerView}>
+                <Text style={styles.splashMessage}>
+                    What's the title of your new Deck?
+                </Text>
+                <TextInput
+                    placeholder="My Deck"
+                    maxLength={20}
+                    textAlign="center"
+                    underlineColorAndroid={colorPrimary}
+                    style={styles.textInput}
+                    value={titleInput}
+                    onChangeText={this.setTitle}
+                />
+                <Button
+                    title="Submit"
+                    onPress={this.submitDeck}
+                    disabled={titleInput===''}
+                />
             </View>
         )
     }
 }
 
-export default NewDeck
+export default connect()(NewDeck)

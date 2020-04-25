@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import {View} from "react-native";
-import Text from "react-native-web/dist/exports/Text";
+import {View, Text} from "react-native";
 
 class QuizResult extends Component {
     render(){

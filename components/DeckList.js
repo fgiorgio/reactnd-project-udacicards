@@ -1,15 +1,35 @@
 import React, {Component} from 'react'
-import {View} from "react-native";
-import Text from "react-native-web/dist/exports/Text";
+import {View, Text, Button, ScrollView} from "react-native";
+import styles from '../styles'
+import {connect} from 'react-redux'
+import DeckItem from "./DeckItem";
 
 class DeckList extends Component {
     render(){
+
+        const {decks,navigation} = this.props
+
+        if(Object.keys(decks).length===0){
+            return (
+                <View style={styles.centerView}>
+                    <Text style={styles.splashMessage}>
+                        Create a new Deck first
+                    </Text>
+                    <Button title="New Deck" onPress={()=>navigation.navigate('New Deck')} />
+                </View>
+            )
+        }
+
         return (
-            <View>
-                <Text>DeckList</Text>
-            </View>
+            <ScrollView style={{paddingTop:20}}>
+                { Object.keys(decks).map((key) => (
+                    <DeckItem key={key} deckTitle={key} />
+                ))}
+            </ScrollView>
         )
     }
 }
 
-export default DeckList
+export default connect((state)=>({
+    decks: state.decks
+}))(DeckList)

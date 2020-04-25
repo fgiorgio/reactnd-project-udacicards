@@ -1,15 +1,26 @@
 import React, {Component} from 'react'
-import {View} from "react-native";
-import Text from "react-native-web/dist/exports/Text";
+import {Text, TouchableOpacity} from "react-native";
+import styles from "../styles";
+import { useNavigation } from '@react-navigation/native';
+import {connect} from 'react-redux'
 
 class DeckItem extends Component {
     render(){
+
+        const {decks,deckTitle,navigation} = this.props
+
         return (
-            <View>
-                <Text>DeckItem</Text>
-            </View>
+            <TouchableOpacity style={styles.deckItem} onPress={()=>navigation.navigate('Deck',{deckTitle})}>
+                <Text style={{fontSize:22}}>{deckTitle}</Text>
+                <Text>{decks[deckTitle].questions.length} cards</Text>
+            </TouchableOpacity>
         )
     }
 }
 
-export default DeckItem
+export default connect((state)=>({
+    decks: state.decks
+}))((props) => {
+    const navigation = useNavigation();
+    return <DeckItem {...props} navigation={navigation} />;
+})
