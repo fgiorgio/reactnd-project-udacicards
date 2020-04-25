@@ -12,7 +12,7 @@ Install dependencies running the following command:
 npm install
 ```
 
-then run the app on a remote device or emulators 
+then run the app on a remote device or emulators (tested with Android)
 
 ```
 expo start
