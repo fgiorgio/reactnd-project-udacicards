@@ -17,7 +17,7 @@ class NewDeck extends Component {
         dispatch(handleNewDeck(titleInput.trim()))
         this.setState({titleInput:''})
         Keyboard.dismiss()
-        navigation.navigate('Decks')
+        navigation.navigate('Deck',{deckTitle:titleInput.trim()})
     }
 
     render(){

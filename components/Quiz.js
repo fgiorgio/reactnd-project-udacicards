@@ -33,7 +33,7 @@ class Quiz extends Component {
                     <Text style={styles.splashMessage}>
                         There are no cards in this Deck
                     </Text>
-                    <Button title="New Card" onPress={()=>navigation.navigate('New Card',{deckTitle})} />
+                    <Button title="New Card" onPress={()=>navigation.replace('New Card',{deckTitle})} />
                 </View>
             )
         }

@@ -15,7 +15,7 @@ class DeckList extends Component {
                     <Text style={styles.splashMessage}>
                         Create a new Deck first
                     </Text>
-                    <Button title="New Deck" onPress={()=>navigation.navigate('New Deck')} />
+                    <Button title="New Deck" onPress={()=>navigation.jumpTo('New Deck')} />
                 </View>
             )
         }

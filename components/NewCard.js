@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {View, Text, TextInput, Button, Keyboard, AsyncStorage} from "react-native";
+import {View, Text, TextInput, Button, Keyboard} from "react-native";
 import styles, {colorPrimary} from "../styles";
 import {handleNewCard} from "../actions/Decks";
 import {connect} from 'react-redux'
@@ -22,7 +22,7 @@ class NewCard extends Component {
             answerInput: '',
         })
         Keyboard.dismiss()
-        navigation.goBack()
+        navigation.navigate('Deck',{deckTitle:route.params.deckTitle})
     }
 
     render(){
@@ -31,6 +31,7 @@ class NewCard extends Component {
 
         return (
             <View style={styles.centerView}>
+                <Text style={{fontSize:22}}>{this.props.route.params.deckTitle}</Text>
                 <Text style={{fontSize:22,marginBottom:20}}>New Card</Text>
                 <TextInput
                     placeholder="Question"
