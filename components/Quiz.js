@@ -40,7 +40,7 @@ class Quiz extends Component {
 
         if(cardIndex===decks[deckTitle].questions.length){
             navigation.replace('Quiz Results',{deckTitle,correctAnswers,incorrectAnswers})
-            return (<View></View>)
+            return (<Text></Text>)
         }
 
         return (

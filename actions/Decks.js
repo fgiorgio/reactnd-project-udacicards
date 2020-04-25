@@ -1,5 +1,6 @@
 import {AsyncStorage} from "react-native";
 
+export const DECKS_STORAGE_KEY = '@UdaciCards:decks';
 export const RECEIVE_DECKS = 'RECEIVE_DECKS';
 export const ADD_DECK = 'ADD_DECK';
 export const ADD_CARD = 'ADD_CARD';
@@ -29,13 +30,13 @@ export function addNewCard(deck,question,answer) {
 
 export function handleInitialData() {
     return (dispatch) => {
-        return AsyncStorage.getItem('@UdaciCards')
+        return AsyncStorage.getItem(DECKS_STORAGE_KEY)
             .then((decks)=>{
                 const decksObj = JSON.parse(decks)
-                if(Object.keys(decksObj).length>0){
+                if(decksObj && Object.keys(decksObj).length>0){
                     dispatch(ReceiveDecks(decksObj));
                 }
-            })
+            }).catch((error)=>console.log(error))
     }
 }
 

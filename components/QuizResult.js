@@ -2,8 +2,13 @@ import React, {Component} from 'react'
 import {View, Text, Button} from "react-native";
 import styles from "../styles";
 import {connect} from "react-redux";
+import {clearLocalNotification} from "../utils/notification";
 
 class QuizResult extends Component {
+    componentDidMount() {
+        clearLocalNotification()
+    }
+
     render(){
 
         const {decks,route,navigation} = this.props

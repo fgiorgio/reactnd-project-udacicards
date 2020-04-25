@@ -14,7 +14,8 @@ import Deck from './components/Deck'
 import NewCard from './components/NewCard'
 import Quiz from './components/Quiz'
 import QuizResult from './components/QuizResult'
-import {handleInitialData} from './actions/Decks'
+import {handleInitialData,DECKS_STORAGE_KEY} from './actions/Decks'
+import {setNotification} from './utils/notification'
 
 const configStore = () => {
     const store = createStore(reducer, middleware);
@@ -22,7 +23,7 @@ const configStore = () => {
     store.subscribe(() => {
         const currentStore = store.getState()
         // @ts-ignore
-        AsyncStorage.setItem('@UdaciCards',JSON.stringify(currentStore.decks))
+        AsyncStorage.setItem(DECKS_STORAGE_KEY,JSON.stringify(currentStore.decks))
     });
 
     return store;
@@ -45,6 +46,7 @@ class App extends Component {
 
     componentDidMount() {
         store.dispatch(handleInitialData())
+        setNotification()
     }
 
     render(){
