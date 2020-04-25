@@ -12,6 +12,7 @@ import DeckList from './components/DeckList'
 import NewDeck from './components/NewDeck'
 import Deck from './components/Deck'
 import NewCard from './components/NewCard'
+import Quiz from './components/Quiz'
 import {handleInitialData} from './actions/Decks'
 
 const configStore = () => {
@@ -55,6 +56,7 @@ class App extends Component {
                             <Stack.Screen name="Decks" options={{headerShown:false}} component={DecksNavigator} />
                             <Stack.Screen name="Deck" component={Deck} />
                             <Stack.Screen name="New Card" component={NewCard} />
+                            <Stack.Screen name="Quiz" component={Quiz} />
                         </Stack.Navigator>
                     </NavigationContainer>
                 </SafeAreaProvider>

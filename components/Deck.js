@@ -14,10 +14,10 @@ class Deck extends Component {
                 <Text style={{fontSize:22}}>{deckTitle}</Text>
                 <Text style={{marginBottom:40}}>{decks[deckTitle].questions.length} cards</Text>
                 <View style={{marginBottom:20}}>
-                    <Button title="Add Card" style={{marginBottom:20}} onPress={()=>navigation.navigate('New Card',{deckTitle})}/>
+                    <Button title="Add Card" onPress={()=>navigation.navigate('New Card',{deckTitle})}/>
                 </View>
                 <View>
-                    <Button title="Start Quiz" onPress={()=>alert()}/>
+                    <Button title="Start Quiz" onPress={()=>navigation.navigate('Quiz',{deckTitle})}/>
                 </View>
             </View>
         )
