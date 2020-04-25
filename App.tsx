@@ -13,6 +13,7 @@ import NewDeck from './components/NewDeck'
 import Deck from './components/Deck'
 import NewCard from './components/NewCard'
 import Quiz from './components/Quiz'
+import QuizResult from './components/QuizResult'
 import {handleInitialData} from './actions/Decks'
 
 const configStore = () => {
@@ -57,6 +58,7 @@ class App extends Component {
                             <Stack.Screen name="Deck" component={Deck} />
                             <Stack.Screen name="New Card" component={NewCard} />
                             <Stack.Screen name="Quiz" component={Quiz} />
+                            <Stack.Screen name="Quiz Results" component={QuizResult} />
                         </Stack.Navigator>
                     </NavigationContainer>
                 </SafeAreaProvider>

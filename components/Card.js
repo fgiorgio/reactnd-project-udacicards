@@ -17,7 +17,7 @@ class Card extends Component {
     render(){
 
         const {showAnswer} = this.state
-        const {decks,deckTitle,cardIndex} = this.props
+        const {decks,deckTitle,cardIndex,setScore} = this.props
         const deck = decks[deckTitle]
         const card = deck.questions[cardIndex]
 
@@ -29,10 +29,10 @@ class Card extends Component {
                     <Text>{showAnswer?'Show question':'Show answer'}</Text>
                 </TouchableOpacity>
                 <View style={{marginTop:20}}>
-                    <Button title="Correct" color="#0C0" onPress={()=>alert()}/>
+                    <Button title="Correct" color="#0C0" onPress={()=>setScore(true)}/>
                 </View>
                 <View style={{marginTop:20}}>
-                    <Button title="Incorrect" color="#C00" onPress={()=>alert()}/>
+                    <Button title="Incorrect" color="#C00" onPress={()=>setScore(false)}/>
                 </View>
             </View>
         )

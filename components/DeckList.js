@@ -24,7 +24,7 @@ class DeckList extends Component {
             <ScrollView style={{paddingTop:20}}>
                 { Object.keys(decks)
                     .sort((a,b)=>{
-                        return (decks[b]>decks[a])?1:-1
+                        return (b<a)?1:-1
                     })
                     .map((key) => (
                         <DeckItem key={key} deckTitle={key} />
